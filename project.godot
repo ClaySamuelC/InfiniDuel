@@ -11,5 +11,9 @@ config_version=5
 [application]
 
 config/name="InfiniDuel"
+run/main_scene="uid://bt13jko8i5tec"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://multi/GameManager.gd"
