@@ -1,0 +1,311 @@
+[gd_scene load_steps=18 format=3 uid="uid://bt13jko8i5tec"]
+
+[ext_resource type="Texture2D" uid="uid://bh4xilvgu3miq" path="res://multi/icon.svg" id="1_0m6ke"]
+[ext_resource type="Script" uid="uid://djqaxi6tj1xms" path="res://multi/SceneManager.gd" id="1_br64h"]
+[ext_resource type="Script" uid="uid://bd5xyii8fpjkl" path="res://multi/templateHero.gd" id="2_fc2wf"]
+[ext_resource type="Texture2D" uid="uid://ckuonvny540pu" path="res://arenaTopDownBattleField.png" id="4_fc2wf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1yx7"]
+size = Vector2(24, 26)
+
+[sub_resource type="Resource" id="Resource_xmuhs"]
+metadata/__load_path__ = "res://Characters(100x100)/Orc/Orc/Orc.png"
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_c85fd"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = false
+properties/0/replication_mode = 0
+properties/1/path = NodePath("GunRotation:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:syncPos")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:syncRot")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[sub_resource type="Animation" id="Animation_bwn2p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AxeArea/AxeHitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Orc:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D/Orc:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Fire:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fire:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_81n31"]
+resource_name = "attack"
+length = 0.16667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Orc:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20, 21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AxeArea/AxeHitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0410545, 0.0783077, 0.0912323, 0.138369),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(7, -6), Vector2(-7, -11), Vector2(11.5, -1), Vector2(11.5, 5.5), Vector2(10.5, 5.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D/Orc:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_24ppk"]
+resource_name = "attack_Left"
+length = 0.16667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Orc:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20, 21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AxeArea/AxeHitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-7, -6), Vector2(7, -11), Vector2(-11.5, -1), Vector2(-11.5, 5.5), Vector2(-10.5, 5.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D/Orc:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tqki8"]
+resource_name = "charging"
+length = 0.733337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Orc:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.166667, 0.266667, 0.366667, 0.466667, 0.566667, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 40, 41, 40, 41, 40, 41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.733337),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fire:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_nolfa"]
+resource_name = "idle"
+length = 0.600003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Orc:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8o2n6"]
+resource_name = "run"
+length = 0.200003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Orc:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.72529e-09, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 13, 14]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8o2n6"]
+_data = {
+&"RESET": SubResource("Animation_bwn2p"),
+&"attack": SubResource("Animation_81n31"),
+&"attack_Left": SubResource("Animation_24ppk"),
+&"charging": SubResource("Animation_tqki8"),
+&"idle": SubResource("Animation_nolfa"),
+&"run": SubResource("Animation_8o2n6")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nolfa"]
+size = Vector2(23, 15)
+
+[sub_resource type="Resource" id="Resource_jc7p7"]
+metadata/__load_path__ = "res://Fire.png"
+
+[sub_resource type="PackedScene" id="PackedScene_pjx36"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741832, 1073741831, 35, 34, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("PJHero", "CharacterBody2D", "Player", "script", "CollisionShape2D", "CollisionShape2D", "shape", "Orc", "Sprite2D", "texture", "flip_h", "hframes", "vframes", "frame", "MultiplayerSynchronizer", "MultiplayerSynchronizer", "replication_interval", "delta_interval", "replication_config", "AnimationPlayer", "AnimationPlayer", "libraries", "AxeArea", "Area2D", "AxeHitbox", "CollisionShape2D", "position", "shape", "Fire", "Sprite2D", "position", "scale", "texture", "hframes", "_on_axe_area_body_entered", "body_entered"),
+"node_count": 8,
+"node_paths": [NodePath("."), NodePath("./CollisionShape2D"), NodePath("."), NodePath("."), NodePath("."), NodePath("./AxeArea"), NodePath("."), NodePath("."), NodePath("AxeArea")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 3, 0, 1, 2, 1073741824, 0, 5, 4, -1, 1, 6, 1, 0, 1073741825, 0, 8, 7, -1, 5, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 0, 1073741826, 0, 15, 14, -1, 3, 16, 7, 17, 8, 18, 9, 0, 1073741827, 0, 20, 19, -1, 1, 21, 10, 0, 1073741828, 0, 23, 22, -1, 0, 0, 1073741829, 0, 25, 24, -1, 2, 26, 11, 27, 12, 0, 1073741830, 0, 29, 28, -1, 4, 30, 13, 31, 14, 32, 15, 33, 16, 0),
+"variants": [ExtResource("2_fc2wf"), SubResource("RectangleShape2D_m1yx7"), SubResource("Resource_xmuhs"), true, 8, 6, 8, 0.1, 0.1, SubResource("SceneReplicationConfig_c85fd"), {
+&"": SubResource("AnimationLibrary_8o2n6")
+}, Vector2(8, 1.5), SubResource("RectangleShape2D_nolfa"), Vector2(-1.52588e-05, -23), Vector2(0.207031, 0.207031), SubResource("Resource_jc7p7"), 7],
+"version": 3
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_br64h")
+PlayerScene = SubResource("PackedScene_pjx36")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(539, 582)
+scale = Vector2(6, 0.2)
+texture = ExtResource("1_0m6ke")
+
+[node name="SpawnLocations" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+position = Vector2(389, 321)
+
+[node name="1" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+position = Vector2(729, 320)
+
+[node name="ArenaTopDownBattleField" type="Sprite2D" parent="."]
+position = Vector2(589, 308)
+scale = Vector2(1.26508, 1.26508)
+texture = ExtResource("4_fc2wf")
