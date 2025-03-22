@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-const SPEED = 45.0
+const SPEED = 75.0
 
 @export var myTeam : String
 @export var enemyTeam : String
 
 var tickTimer = 150
 var tick = 0
-var lifeTimer = 3
+var lifeTimer = 900
 var lifeTick = 0
 
 var target

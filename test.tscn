@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcxrid1ggobq5"]
+
+[ext_resource type="Texture2D" uid="uid://ckuonvny540pu" path="res://arenaTopDownBattleField.png" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://bvgqt374qbnc8" path="res://PjTeam/dreadnought.tscn" id="2_6uqi0"]
+[ext_resource type="PackedScene" path="res://multi/Knight.tscn" id="3_ppyta"]
+
+[node name="TEST" type="Node2D"]
+
+[node name="ArenaTopDownBattleField" type="Sprite2D" parent="."]
+position = Vector2(941.5, 517.5)
+scale = Vector2(1.97483, 1.12934)
+texture = ExtResource("1_37kl0")
+
+[node name="Dreadnought" parent="." instance=ExtResource("2_6uqi0")]
+position = Vector2(1407, 536)
+
+[node name="Knight" parent="." instance=ExtResource("3_ppyta")]
+position = Vector2(442, 547)
