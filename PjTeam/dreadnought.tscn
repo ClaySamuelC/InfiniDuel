@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvgqt374qbnc8"]
+
+[ext_resource type="Texture2D" uid="uid://duedmadx0slgo" path="res://assets/Foozle_2DS0013_Void_EnemyFleet_2/Nairan/Designs - Base/PNGs/Nairan - Dreadnought - Base.png" id="1_0axuq"]
+[ext_resource type="Script" uid="uid://cslggw7101avp" path="res://PjTeam/dreadnought.gd" id="1_5h4f5"]
+[ext_resource type="Texture2D" uid="uid://bcdpscab7sc0t" path="res://assets/Foozle_2DS0013_Void_EnemyFleet_2/Nairan/Engine Effects/PNGs/Nairan - Dreadnought - Engine.png" id="3_amek7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5h4f5"]
+
+[sub_resource type="Animation" id="Animation_wuyis"]
+resource_name = "engine"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nairan-Dreadnought-Engine:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.141667, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_5uuyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nairan-Dreadnought-Engine:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_68vk7"]
+_data = {
+&"RESET": SubResource("Animation_5uuyt"),
+&"engine": SubResource("Animation_wuyis")
+}
+
+[node name="Dreadnought" type="CharacterBody2D"]
+script = ExtResource("1_5h4f5")
+myTeam = "PJ"
+enemyTeam = "G-Man"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5h4f5")
+
+[node name="Nairan-Dreadnought-Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_0axuq")
+
+[node name="Engine" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_68vk7")
+}
+
+[node name="Nairan-Dreadnought-Engine" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("3_amek7")
+hframes = 8

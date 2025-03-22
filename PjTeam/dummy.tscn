@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfq4lwo57lenb"]
+
+[ext_resource type="Texture2D" uid="uid://bh4xilvgu3miq" path="res://multi/icon.svg" id="1_jrly6"]
+[ext_resource type="Script" uid="uid://behwf73g43s66" path="res://PjTeam/dummy.gd" id="1_knx6p"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_knx6p"]
+radius = 67.0
+height = 134.0
+
+[node name="Dummy" type="CharacterBody2D"]
+script = ExtResource("1_knx6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -1)
+shape = SubResource("CapsuleShape2D_knx6p")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(4.875, -2)
+scale = Vector2(0.830078, 0.769531)
+texture = ExtResource("1_jrly6")
