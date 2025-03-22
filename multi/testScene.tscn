@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bt13jko8i5tec"]
+[gd_scene load_steps=20 format=3 uid="uid://bt13jko8i5tec"]
 
 [ext_resource type="Texture2D" uid="uid://bh4xilvgu3miq" path="res://multi/icon.svg" id="1_0m6ke"]
 [ext_resource type="Script" uid="uid://djqaxi6tj1xms" path="res://multi/SceneManager.gd" id="1_br64h"]
 [ext_resource type="Script" uid="uid://bd5xyii8fpjkl" path="res://multi/templateHero.gd" id="2_fc2wf"]
 [ext_resource type="Texture2D" uid="uid://ckuonvny540pu" path="res://arenaTopDownBattleField.png" id="4_fc2wf"]
+[ext_resource type="PackedScene" uid="uid://bvgqt374qbnc8" path="res://PjTeam/dreadnought.tscn" id="5_xmuhs"]
+[ext_resource type="PackedScene" uid="uid://dfq4lwo57lenb" path="res://PjTeam/dummy.tscn" id="6_jc7p7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1yx7"]
 size = Vector2(24, 26)
@@ -306,6 +308,15 @@ position = Vector2(389, 321)
 position = Vector2(729, 320)
 
 [node name="ArenaTopDownBattleField" type="Sprite2D" parent="."]
+z_index = -10
 position = Vector2(589, 308)
 scale = Vector2(1.26508, 1.26508)
 texture = ExtResource("4_fc2wf")
+
+[node name="Dreadnought" parent="." instance=ExtResource("5_xmuhs")]
+position = Vector2(370, 492)
+
+[node name="Dummy" parent="." instance=ExtResource("6_jc7p7")]
+position = Vector2(603, 342)
+myTeam = "G-Man"
+enemyTeam = "G-Man"

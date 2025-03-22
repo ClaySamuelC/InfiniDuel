@@ -1,0 +1,169 @@
+[gd_scene load_steps=13 format=3 uid="uid://dgex4wmn2u6ha"]
+
+[ext_resource type="Script" uid="uid://cuhbn6vp7tw68" path="res://PjTeam/bomber.gd" id="1_3s8ar"]
+[ext_resource type="Texture2D" uid="uid://qmnfpxjrjpd5" path="res://assets/Foozle_2DS0013_Void_EnemyFleet_2/Nairan/Designs - Base/PNGs/Nairan - Bomber - Base.png" id="2_nnahf"]
+[ext_resource type="Texture2D" uid="uid://dd4atpvp7fftb" path="res://assets/Foozle_2DS0013_Void_EnemyFleet_2/Nairan/Engine Effects/PNGs/Nairan - Bomber - Engine.png" id="3_08qnq"]
+[ext_resource type="Texture2D" uid="uid://dhmios0hyrhdl" path="res://assets/Foozle_2DS0013_Void_EnemyFleet_2/Nairan/Destruction/PNGs/Nairan - Bomber -  Destruction.png" id="4_nnahf"]
+[ext_resource type="Texture2D" uid="uid://18nuv0omjq5m" path="res://assets/Foozle_2DS0013_Void_EnemyFleet_2/Nairan/Shields/PNGs/Nairan - Bomber - Shield.png" id="5_08qnq"]
+
+[sub_resource type="Animation" id="Animation_pvv2w"]
+resource_name = "engine"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nairan-Bomber-Engine:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.125, 0.183333, 0.241667, 0.308333, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_k8wxv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nairan-Bomber-Engine:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6e7b"]
+_data = {
+&"RESET": SubResource("Animation_k8wxv"),
+&"engine": SubResource("Animation_pvv2w")
+}
+
+[sub_resource type="Animation" id="Animation_08qnq"]
+resource_name = "bomb"
+length = 0.28
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bomb/Nairan-Bomber-Destruction:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bomb/Nairan-Bomber-Destruction:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.28),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_i6e7b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bomb/Nairan-Bomber-Destruction:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bomb/Nairan-Bomber-Shield:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bomb/Nairan-Bomber-Destruction:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tqmpp"]
+resource_name = "aiming"
+length = 0.1
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bomb/Nairan-Bomber-Shield:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqmpp"]
+_data = {
+&"RESET": SubResource("Animation_i6e7b"),
+&"aiming": SubResource("Animation_tqmpp"),
+&"bomb": SubResource("Animation_08qnq")
+}
+
+[node name="Bomber" type="CharacterBody2D"]
+script = ExtResource("1_3s8ar")
+
+[node name="Nairan-Bomber-Base" type="Sprite2D" parent="."]
+z_index = 3
+texture = ExtResource("2_nnahf")
+
+[node name="Nairan-Bomber-Engine" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("3_08qnq")
+hframes = 8
+
+[node name="Engine" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i6e7b")
+}
+
+[node name="Bomb" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tqmpp")
+}
+
+[node name="Nairan-Bomber-Shield" type="Sprite2D" parent="Bomb"]
+texture = ExtResource("5_08qnq")
+hframes = 10
+frame = 1
+
+[node name="Nairan-Bomber-Destruction" type="Sprite2D" parent="Bomb"]
+z_index = 1
+texture = ExtResource("4_nnahf")
+hframes = 16
+frame = 8
