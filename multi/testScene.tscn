@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkcba11ttp316"]
+
+[ext_resource type="Script" path="res://multi/SceneManager.gd" id="1_br64h"]
+[ext_resource type="PackedScene" uid="uid://dpmx1tqqf6dp5" path="res://multi/Knight.tscn" id="3_d7d0l"]
+[ext_resource type="Script" path="res://multi/templateHero.gd" id="4_xmuhs"]
+[ext_resource type="Texture2D" path="res://multi/icon.svg" id="5_jc7p7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjx36"]
+radius = 24.0208
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmuhs"]
+size = Vector2(119, 120)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_br64h")
+
+[node name="SpawnLocations" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+position = Vector2(389, 321)
+
+[node name="1" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+position = Vector2(729, 320)
+
+[node name="ArenaTopDownBattleField" type="Sprite2D" parent="."]
+position = Vector2(589, 308)
+scale = Vector2(1.26508, 1.26508)
+
+[node name="Knight" parent="." instance=ExtResource("3_d7d0l")]
+position = Vector2(718, 256)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(250, 250)
+script = ExtResource("4_xmuhs")
+myTeam = "PJ"
+enemyTeam = "G-Man"
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("5_jc7p7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_pjx36")
+
+[node name="Hitbox" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+shape = SubResource("RectangleShape2D_xmuhs")
